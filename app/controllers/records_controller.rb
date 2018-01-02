@@ -1,19 +1,19 @@
 class RecordsController < ApplicationController
     def index
-        @records = Record.all
+      @records = Record.all
     end
     
     def create
-        @record = Record.new(record_params)
-        if @record.save
-          render json: @record
-        else
-          render json: @record.errors, status: :unprocessable_entity
-        end
+      @record = Record.new(record_params)
+      if @record.save
+        render json: @record
+      else
+        render json: @record.errors, status: :unprocessable_entity
+      end
     end
-     
+   
     private
-        def record_params
-          params.require(:record).permit(:date, :title, :amount)
-        end
+      def record_params
+        params.require(:record).permit(:date, :title, :amount)
+      end
 end
