@@ -11,16 +11,16 @@ class RecordsController < ApplicationController
         render json: @record.errors, status: :unprocessable_entity
       end
     end
-   
-    private
-      def record_params
-        params.require(:record).permit(:date, :title, :amount)
-      end
-      
+    
     def destroy
       @record = Record.find(params[:id])
       @record.destroy
       head :no_content
     end  
+      
+    private
+      def record_params
+        params.require(:record).permit(:date, :title, :amount)
+      end
       
 end
